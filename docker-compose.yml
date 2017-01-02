@@ -6,7 +6,7 @@ services:
     ports:
       - "80:80"
       - "443:443"
-      - "9001:9001"
+      - "9000:9000"
     volumes:
       - ./php/www:/var/www/html
     environment:
