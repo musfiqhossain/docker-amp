@@ -3,19 +3,20 @@ version: '2'
 services:
   php:
     build: php
+    container_name: "php_container"
     ports:
       - "80:80"
       - "443:443"
-      - "9000:9000"
     volumes:
       - ./php/www:/var/www/html
     environment:
-      XDEBUG_CONFIG: "remote_host=172.19.0.1"
+      XDEBUG_CONFIG: "remote_host=172.18.0.1"
     links:
       - db
 
   db:
     image: mysql:5.7
+    container_name: "mysql_container"
     volumes: 
      - /var/lib/mysql
     environment: 
