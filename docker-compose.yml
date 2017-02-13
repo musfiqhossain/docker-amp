@@ -3,22 +3,32 @@ version: '2'
 services:
   php:
     build: php
-    container_name: "php_container"
     ports:
       - "80:80"
       - "443:443"
     volumes:
-      - ./php/www:/var/www/html
-    environment:
-      XDEBUG_CONFIG: "remote_host=172.18.0.1"
+      - /home/mhossain/code2/mmi:/var/www/html
     links:
       - db
-
   db:
     image: mysql:5.7
-    container_name: "mysql_container"
-    volumes: 
+    container_name: "mysql_container_z"
+    volumes:
      - /var/lib/mysql
-    environment: 
+    environment:
      - MYSQL_ROOT_PASSWORD=hunter2
      - MYSQL_DATABASE=database
+
+  mongodata:
+   image: mongo:3.0.4
+   volumes:
+    - /data/db
+   command: --break-mongo
+
+  mongo:
+   image: mongo:3.0.4
+   container_name: "mongodb_container_z"
+   volumes_from:
+    - mongodata
+   ports:
+    - "27017:27017"
