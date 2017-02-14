@@ -1,34 +1,8 @@
-version: '2'
-
+version: '2.1'
 services:
-  php:
-    build: php
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - /home/mhossain/code2/mmi:/var/www/html
-    links:
-      - db
-  db:
-    image: mysql:5.7
-    container_name: "mysql_container_z"
-    volumes:
-     - /var/lib/mysql
-    environment:
-     - MYSQL_ROOT_PASSWORD=hunter2
-     - MYSQL_DATABASE=database
-
-  mongodata:
-   image: mongo:3.0.4
-   volumes:
-    - /data/db
-   command: --break-mongo
-
-  mongo:
-   image: mongo:3.0.4
-   container_name: "mongodb_container_z"
-   volumes_from:
-    - mongodata
-   ports:
-    - "27017:27017"
+    php:
+        build: php
+        ports:
+            - "80:80"
+        volumes:
+            - ~/www:/var/www/html
