@@ -38,10 +38,11 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 RUN pecl install mongodb && \
-    pecl install xdebug
+    pecl install xdebug && \
+    pecl install apcu && \
+    pecl install redis
 #RUN yes | pecl install mongodb && echo "extension=$(find /usr/lib/php/20160303 -name mongodb.so)" > /etc/php/7.1/apache2/conf.d/mongo.ini
 COPY config /
-ADD zf/*.tar.gz /
 RUN sh /usr/local/bin/install.sh
 WORKDIR /var/www/html
 EXPOSE 80 9001
