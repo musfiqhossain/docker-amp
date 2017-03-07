@@ -10,5 +10,5 @@ services:
             - "80:80"
         volumes:
             - ~/sources:/var/www/html
-    redis:
+    cache_server:
         image: redis:latest
