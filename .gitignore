@@ -23,3 +23,5 @@ fabric.properties
 
 #Docker related
 docker-compose.yml
+dump/*
+.env

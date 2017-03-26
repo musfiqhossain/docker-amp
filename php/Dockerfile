@@ -7,7 +7,7 @@ ENV APACHE_RUN_USER www-data \
     APACHE_LOG_DIR /var/log/apache2 \
     APACHE_PID_FILE /var/run/apache2.pid \
     APACHE_RUN_DIR /var/run/apache2 \
-    APACHE_LOCK_DIR /var/lock/apache2
+    APACHE_LOCK_DIR /var/lock/apache2a
 
 RUN apt-get update && \
     apt-get -y install software-properties-common && \
@@ -42,7 +42,6 @@ RUN pecl install mongodb && \
     pecl install xdebug && \
     pecl install apcu && \
     pecl install redis
-#RUN yes | pecl install mongodb && echo "extension=$(find /usr/lib/php/20160303 -name mongodb.so)" > /etc/php/7.1/apache2/conf.d/mongo.ini
 COPY config /
 RUN sh /usr/local/bin/install.sh
 WORKDIR /var/www/html
