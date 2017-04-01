@@ -1,5 +1,4 @@
 FROM ubuntu:16.04
-MAINTAINER Musfiq Hossain <only.musfiq@gmail.com>
 
 # Set Apache environment variables (can be changed on docker run with -e)
 ENV APACHE_RUN_USER www-data \
@@ -10,7 +9,8 @@ ENV APACHE_RUN_USER www-data \
     APACHE_LOCK_DIR /var/lock/apache2a
 
 RUN apt-get update && \
-    apt-get -y install software-properties-common && \
+    apt-get -y install software-properties-common \
+    xvfb && \
     locale-gen en_US.UTF-8 && \
     export LC_ALL=en_US.UTF-8 && \
     export LANG=en_US.UTF-8 && \
@@ -35,13 +35,14 @@ RUN apt-get update && \
     libapache2-mod-php7.1 \
     php-pear \
     wget \
+    nano \
+    wkhtmltopdf \
     pkg-config && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 RUN pecl install mongodb && \
     pecl install xdebug && \
-    pecl install apcu && \
-    pecl install redis
+    pecl install apcu
 COPY config /
 RUN sh /usr/local/bin/install.sh
 WORKDIR /var/www/html
