@@ -6,7 +6,8 @@ ENV APACHE_RUN_USER www-data \
     APACHE_LOG_DIR /var/log/apache2 \
     APACHE_PID_FILE /var/run/apache2.pid \
     APACHE_RUN_DIR /var/run/apache2 \
-    APACHE_LOCK_DIR /var/lock/apache2a
+    APACHE_LOCK_DIR /var/lock/apache2a \
+    PATH="/root/.composer/vendor/bin:${PATH}"
 
 RUN apt-get update && \
     apt-get -y install software-properties-common \
@@ -42,7 +43,9 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 RUN pecl install mongodb && \
     pecl install xdebug && \
-    pecl install apcu
+    pecl install apcu && \
+    pecl install request-1.0.0b1 && \
+    pecl install xattr
 COPY config /
 RUN sh /usr/local/bin/install.sh
 WORKDIR /var/www/html
