@@ -25,4 +25,7 @@ export COMPOSER_CACHE_DIR="/root/.composer/cache"
 export COMPOSER_ALLOW_XDEBUG=1
 export COMPOSER_DISABLE_XDEBUG_WARN=1
 
+# Install Global PHP Development Libraries
+composer global install
+
 exec "$@"
