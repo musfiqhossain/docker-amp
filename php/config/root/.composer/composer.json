@@ -8,6 +8,7 @@
     "pdepend/pdepend": "^2.5",
     "phploc/phploc": "^3.0",
     "sebastian/phpdcd": "*",
-    "sebastian/phpcpd": "^3.0"
+    "sebastian/phpcpd": "^3.0",
+    "hirak/prestissimo": "^0.3"
   }
 }

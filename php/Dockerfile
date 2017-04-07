@@ -21,6 +21,7 @@ RUN apt-get update && \
     apache2 \
     php7.1 \
     php7.1-dev \
+    php7.1-curl \
     php7.1-cli \
     php7.1-gd \
     php7.1-json \
