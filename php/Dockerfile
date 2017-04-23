@@ -1,23 +1,20 @@
 FROM ubuntu:16.04
 
 # Set Apache environment variables (can be changed on docker run with -e)
-ENV APACHE_RUN_USER www-data \
-    APACHE_RUN_GROUP www-data \
-    APACHE_LOG_DIR /var/log/apache2 \
-    APACHE_PID_FILE /var/run/apache2.pid \
-    APACHE_RUN_DIR /var/run/apache2 \
-    APACHE_LOCK_DIR /var/lock/apache2a \
+ENV APACHE_RUN_USER=www-data \
+    APACHE_RUN_GROUP=www-data \
+    APACHE_LOG_DIR=/var/log/apache2 \
+    APACHE_PID_FILE=/var/run/apache2.pid \
+    APACHE_RUN_DIR=/var/run/apache2 \
+    APACHE_LOCK_DIR=/var/lock/apache2a \
     PATH="/root/.composer/vendor/bin:${PATH}"
 
 RUN apt-get update && \
     apt-get -y install software-properties-common \
     xvfb && \
-    locale-gen en_US.UTF-8 && \
-    export LC_ALL=en_US.UTF-8 && \
-    export LANG=en_US.UTF-8 && \
     add-apt-repository ppa:ondrej/php && \
     apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get -y install \
+    DEBIAN_FRONTEND=noninteractive apt-get -y --allow-unauthenticated install \
     apache2 \
     php7.1 \
     php7.1-dev \

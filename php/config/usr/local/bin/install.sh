@@ -18,7 +18,6 @@ php composer-setup.php --quit --install-dir=/usr/local/bin --filename=composer
 RESULT=$?
 rm composer-setup.php
 
-export PATH="/root/.composer/vendor/bin:${PATH}"
 export COMPOSER_ALLOW_SUPERUSER=1
 export COMPOSER_HOME="/root/.composer"
 export COMPOSER_CACHE_DIR="/root/.composer/cache"
