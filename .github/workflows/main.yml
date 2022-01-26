@@ -9,4 +9,4 @@ jobs:
           GITHUB_CONTEXT: ${{ github.event.pull_request.commits_url }}
         run: echo "$GITHUB_CONTEXT"
 #       - run: curl -o out.json ${{ github.event.pull_request.commits_url }}
-      - run: ./github-action-check-pull-request.sh $(curl -s "${GITHUB_CONTEXT}" | jq -r '.[0].sha')
+      - run: sh ./github-action-check-pull-request.sh $(curl -s "${GITHUB_CONTEXT}" | jq -r '.[0].sha')
