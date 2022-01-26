@@ -1,0 +1,1 @@
+echo "Argument: $1";
