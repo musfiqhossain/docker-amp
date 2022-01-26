@@ -1,18 +1,34 @@
 name: PR commits
 on: pull_request
 jobs:
-  one:
+  build:
+    name: Trigger Benchmarks
+
     runs-on: ubuntu-latest
+
     steps:
-      - name: Dump GitHub context
+      - name: Handle Incoming Pull-Request
         env:
+          DISPATCH_REPO: "benchmarks"
+          DISPATCH_OWNER: "npm"
+          EVENT_NAME: ${{ github.event_name }}
+          EVENT_ACTION: ${{ github.event.action }}
+          REPO: ${{ github.event.repository.name }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          PR_OWNER: ${{ github.event.pull_request.head.repo.owner.login }}
           PR_COMMITS_URL: ${{ github.event.pull_request.commits_url }}
-#       - run: curl -o out.json ${{ github.event.pull_request.commits_url }}
-#       - run: sh ./github-action-check-pull-request.sh "$(curl -s "${GITHUB_CONTEXT}" | jq -r '.[0].sha')"
-#       - run: COMMIT_SHA="Musfiq" #$(curl -s "${PR_COMMITS_URL}" | jq -r '.[0].sha')
-#       - run: sh ./github-action-check-pull-request.sh "${COMMIT_SHA}"
-#       - run: echo "${COMMIT_SHA}"
+          PR_COMMIT_SHA: ${{ github.event.pull_request.head.sha }}
+          AUTH_TOKEN: ${{ secrets.NPM_DEPLOY_USER_PAT }}
         run: |
+          # Dispatch Handler
+          dispatch_request () {
+            echo "Dispatching request..."
+            REF_SHA=$1
+            echo "${REF_SHA}"
+          }
+
+
+          # Fetch the head commit sha, since it doesn't exist in the body of this event
           COMMIT_SHA=$(curl -s "${PR_COMMITS_URL}" | jq -r '.[0].sha')
-          echo "${COMMIT_SHA}"
-        
+          # Dispatch request for benchmarks
+          dispatch_request "${COMMIT_SHA}"
