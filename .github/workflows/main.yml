@@ -27,4 +27,4 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Check pull request
-        run: sh ./github-action-check-pull-request.sh "${GITHUB_REF#refs/heads/}.${GITHUB_SHA}"
+        run: sh ./github-action-check-pull-request.sh "${GITHUB_SHA}"
