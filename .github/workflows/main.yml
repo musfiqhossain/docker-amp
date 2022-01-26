@@ -27,6 +27,4 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Check pull request
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: sh ./github-action-check-pull-request.sh "${GITHUB_CONTEXT}"
+        run: sh ./github-action-check-pull-request.sh "${{github.event.pull_request.head.sha}}"
