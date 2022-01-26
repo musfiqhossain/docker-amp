@@ -11,4 +11,5 @@ jobs:
 #       - run: curl -o out.json ${{ github.event.pull_request.commits_url }}
 #       - run: sh ./github-action-check-pull-request.sh "$(curl -s "${GITHUB_CONTEXT}" | jq -r '.[0].sha')"
       - run: COMMIT_SHA=$(curl -s "${PR_COMMITS_URL}" | jq -r '.[0].sha')
-      - run: sh ./github-action-check-pull-request.sh "${COMMIT_SHA}"
+#       - run: sh ./github-action-check-pull-request.sh "${COMMIT_SHA}"
+      - run: echo COMMIT_SHA
