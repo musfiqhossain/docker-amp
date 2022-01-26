@@ -8,9 +8,5 @@ jobs:
         env:
           GITHUB_CONTEXT: ${{ github.event.pull_request.commits_url }}
         run: echo "$GITHUB_CONTEXT"
-      - run: curl -o out.json ${{ github.event.pull_request.commits_url }}
-      - name: Upload artifact
-        uses: actions/upload-artifact@v1.0.0
-        with:
-          name: commits
-          path: out.json
+#       - run: curl -o out.json ${{ github.event.pull_request.commits_url }}
+      - run: ./github-action-check-pull-request.sh $(curl -s "${GITHUB_CONTEXT}" | jq -r '.[0].sha')
