@@ -25,6 +25,10 @@ jobs:
             echo "Dispatching request..."
             REF_SHA=$1
             echo "${REF_SHA}"
+            echo "All branch"
+            git branch --contains "${REF_SHA}"
+            echo "QA branch"
+            git branch --contains "${REF_SHA}" | grep qa
           }
 
 
