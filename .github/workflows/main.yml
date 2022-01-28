@@ -32,7 +32,7 @@ jobs:
             echo "${REF_SHA}"
             echo "All branch"
             files=$(git branch --contains "${REF_SHA}")
-            echo files
+            echo "${files}"
             # echo "QA branch"
             # git branch --contains "${REF_SHA}" | grep qa
           }
