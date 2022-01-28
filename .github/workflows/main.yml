@@ -26,9 +26,10 @@ jobs:
             REF_SHA=$1
             echo "${REF_SHA}"
             echo "All branch"
-            git branch --contains "${REF_SHA}"
-            echo "QA branch"
-            git branch --contains "${REF_SHA}" | grep qa
+            files=$(git branch --contains "${REF_SHA}")
+            echo files
+            # echo "QA branch"
+            # git branch --contains "${REF_SHA}" | grep qa
           }
 
 
