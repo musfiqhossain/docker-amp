@@ -1,5 +1,8 @@
 name: PR commits
-on: pull_request
+on: 
+  pull_request:
+    branches:
+      - master
 jobs:
   build:
     name: Trigger Benchmarks
@@ -7,6 +10,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v2
+        with:
+            ref: ${{ github.head_ref }}
+            fetch-depth: 0
       - name: Handle Incoming Pull-Request
         env:
           DISPATCH_REPO: "benchmarks"
@@ -26,13 +34,14 @@ jobs:
             REF_SHA=$1
             echo "${REF_SHA}"
             echo "All branch"
-            files=$(git branch --contains "${REF_SHA}")
-            echo files
-            # echo "QA branch"
-            # git branch --contains "${REF_SHA}" | grep qa
+            #files=$(git branch --contains "${REF_SHA}")
+            #echo "${files}"
+            echo "QA branch"
+            checkqa=$(git branch --contains "${REF_SHA}" | grep qa)
+            echo "${checkqa}"
           }
 
-
+          echo "${PR_COMMITS_URL}"
           # Fetch the head commit sha, since it doesn't exist in the body of this event
           COMMIT_SHA=$(curl -s "${PR_COMMITS_URL}" | jq -r '.[0].sha')
           # Dispatch request for benchmarks
