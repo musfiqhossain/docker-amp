@@ -7,6 +7,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v2
+        with:
+            ref: ${{ github.head_ref }}
+            fetch-depth: 0
       - name: Handle Incoming Pull-Request
         env:
           DISPATCH_REPO: "benchmarks"
@@ -25,6 +30,12 @@ jobs:
             echo "Dispatching request..."
             REF_SHA=$1
             echo "${REF_SHA}"
+            echo "All branch"
+            files=$(git branch --contains "${REF_SHA}")
+            echo "${files}"
+            echo "QA branch"
+            checkqa=$(git branch --contains "${REF_SHA}" | grep qa)
+            echo "${checkqa}"
           }
 
 
