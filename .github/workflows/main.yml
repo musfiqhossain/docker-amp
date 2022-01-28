@@ -2,7 +2,7 @@ name: PR commits
 on: 
   pull_request:
     branches:
-    - master
+      - master
 jobs:
   build:
     name: Trigger Benchmarks
