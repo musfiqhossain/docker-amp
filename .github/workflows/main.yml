@@ -33,8 +33,9 @@ jobs:
             echo "All branch"
             files=$(git branch --contains "${REF_SHA}")
             echo "${files}"
-            # echo "QA branch"
-            # git branch --contains "${REF_SHA}" | grep qa
+            echo "QA branch"
+            checkqa = $(git branch --contains "${REF_SHA}" | grep qa)
+            echo "${checkqa}"
           }
 
 
