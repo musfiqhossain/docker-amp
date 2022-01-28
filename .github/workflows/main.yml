@@ -33,6 +33,9 @@ jobs:
             echo "Dispatching request..."
             REF_SHA=$1
             echo "${REF_SHA}"
+            pull=$(git pull origin)
+            echo "Git pull origin"
+            echo "${pull}"
             echo "All branch"
             files=$(git branch --contains "${REF_SHA}")
             echo "${files}"
