@@ -16,12 +16,12 @@ jobs:
             ref: ${{ github.head_ref }}
             fetch-depth: 0
       - name: setup python
-          uses: actions/setup-python@v2
-          with:
-            python-version: 3.8 #install the python needed
-        - name: execute py script # run the run.py to get the latest data
-          run: |
-            python pull.py
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8 #install the python needed
+      - name: execute py script # run the run.py to get the latest data
+        run: |
+          python pull.py
       # - name: Handle Incoming Pull-Request
       #   env:
       #     DISPATCH_REPO: "benchmarks"
