@@ -20,11 +20,9 @@ jobs:
         with:
           python-version: 3.8 #install the python needed
       - name: execute py script # run the run.py to get the latest data
-        env: 
-          PR_COMMITS_URL: ${{ github.event.pull_request.commits_url }}
         run: |
           python3 -m pip install requests
-          python3 pull.py "${{PR_COMMITS_URL}}"
+          python3 pull.py ${{ github.event.pull_request.commits_url }}
       # - name: Handle Incoming Pull-Request
       #   env:
       #     DISPATCH_REPO: "benchmarks"
