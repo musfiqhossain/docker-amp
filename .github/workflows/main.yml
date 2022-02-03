@@ -1,11 +1,13 @@
 name: PR commits
 on: 
   pull_request:
-    branches:
-      - master
+    branches-ignore:
+      - qa
+#     branches:
+#       - master
 jobs:
   build:
-    name: Trigger Benchmarks 2
+    name: Trigger Benchmarks 3
 
     runs-on: ubuntu-latest
 
@@ -13,7 +15,7 @@ jobs:
       - name: Check out Git repository
         uses: actions/checkout@v2
         with:
-#             ref: ${{ github.head_ref }}
+            ref: ${{ github.head_ref }}
             fetch-depth: 0
       - name: setup python
         uses: actions/setup-python@v2
