@@ -5,7 +5,7 @@ on:
       - master
 jobs:
   build:
-    name: Trigger Benchmarks 1
+    name: Trigger Benchmarks 2
 
     runs-on: ubuntu-latest
 
