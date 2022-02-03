@@ -6,7 +6,10 @@ response = requests.get(pr_commit_url)
 json_data = json.loads(response.text)
 
 
-print("arg ", sys.argv[1])
+print("PR commit url", sys.argv[1])
+
+subprocess.run(["git", "checkout", "qa"])
+subprocess.run(["git", "pull", "origin", "qa"])
 
 for c in json_data:
     sha =  c['sha']
@@ -17,7 +20,7 @@ for c in json_data:
             if output == 'qa':
                 print('PR in QA')
             else:
-                print('Cannot open PQ to main, Exit')
+                print('Cannot open PQ to main')
                 sys.exit(1)
     else:
         print("skip merge", c['commit']['message'])
