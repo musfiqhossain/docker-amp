@@ -1,10 +1,8 @@
 name: PR commits
 on: 
   pull_request:
-    branches-ignore:
-      - qa
-#     branches:
-#       - master
+    branches:
+      - master
 jobs:
   build:
     name: Trigger Benchmarks 4
