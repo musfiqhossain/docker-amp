@@ -8,9 +8,3 @@ PHP
 XDEBUG
 
 docker-compose up --build
-
-9
-branch2
-master 
-www
-eee
