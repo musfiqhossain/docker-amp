@@ -18,7 +18,7 @@ for c in json_data:
             proc = subprocess.Popen(['git', 'branch','--contains' , sha, '|', 'grep', 'qa'], stdout=subprocess.PIPE)
             output = proc.stdout.read().decode('utf-8').strip()
             print("output", output)
-            if output == 'qa':
+            if output == '* qa':
                 print('PR in QA')
             else:
                 print('Cannot open PQ to main')
