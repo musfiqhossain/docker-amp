@@ -18,5 +18,6 @@ for c in json_data:
                 print('PR in QA')
             else:
                 print('Cannot open PQ to main')
+                sys.exit(1)
     else:
         print("skip merge", c['commit']['message'])
