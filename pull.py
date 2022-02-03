@@ -6,7 +6,7 @@ response = requests.get(pr_commit_url)
 json_data = json.loads(response.text)
 
 
-print("PR commit url", sys.argv[1])
+print("PR commit url 2", sys.argv[1])
 
 subprocess.run(["git", "checkout", "qa"])
 subprocess.run(["git", "pull", "origin", "qa"])
