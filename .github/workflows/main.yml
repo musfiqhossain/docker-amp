@@ -1,11 +1,13 @@
 name: PR commits
 on: 
   pull_request:
-    branches:
-      - master
+    branches-ignore:
+      - qa
+#     branches:
+#       - master
 jobs:
   build:
-    name: Trigger Benchmarks 2
+    name: Trigger Benchmarks 3
 
     runs-on: ubuntu-latest
 
