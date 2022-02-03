@@ -7,7 +7,7 @@ on:
 #       - master
 jobs:
   build:
-    name: Trigger Benchmarks 3
+    name: Trigger Benchmarks 4
 
     runs-on: ubuntu-latest
 
@@ -25,6 +25,7 @@ jobs:
         run: |
           echo github.ref is: ${{ github.ref }}
           echo github.event_name is: ${{ github.event_name }}
+          echo ${{ github.ref }}
       - name: Check missing commits in qa branch
         run: |
           python3 -m pip install requests
