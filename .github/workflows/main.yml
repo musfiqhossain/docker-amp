@@ -2,10 +2,10 @@ name: PR commits
 on: 
   pull_request:
     branches:
-      - "master"
+      - master
 jobs:
   build:
-    name: Trigger Benchmarks
+    name: Trigger Benchmarks 1
 
     runs-on: ubuntu-latest
 

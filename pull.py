@@ -17,6 +17,7 @@ for c in json_data:
             print("Checking commit ", c['commit']['message'], "sha#", sha)
             proc = subprocess.Popen(['git', 'branch','--contains' , sha, '|', 'grep', 'qa'], stdout=subprocess.PIPE)
             output = proc.stdout.read().decode('utf-8').strip()
+            print("output", output)
             if output == 'qa':
                 print('PR in QA')
             else:
