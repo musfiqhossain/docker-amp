@@ -14,7 +14,7 @@ subprocess.run(["git", "pull", "origin", "qa"])
 for c in json_data:
     sha =  c['sha']
     if c['commit']['message'].find("Merge") == -1:
-            print("Checking commit ", c['commit']['message'])
+            print("Checking commit ", c['commit']['message'], "sha#", sha)
             proc = subprocess.Popen(['git', 'branch','--contains' , sha, '|', 'grep', 'qa'], stdout=subprocess.PIPE)
             output = proc.stdout.read().decode('utf-8').strip()
             if output == 'qa':
