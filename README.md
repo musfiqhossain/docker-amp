@@ -6,10 +6,11 @@ APACHE
 MYSQL
 PHP
 XDEBUG
+rterter
 
 docker-compose up --build
 
 213213
-
+ewrwerwer
 updatw
-23333
+23333666664534543
