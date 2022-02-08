@@ -6,6 +6,7 @@ APACHE
 MYSQL
 PHP
 XDEBUG
+rterter
 
 docker-compose up --build
 
